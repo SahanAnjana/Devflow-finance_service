@@ -9,7 +9,7 @@ from app.schemas import (BudgetCreate, BudgetUpdate, BudgetResponse)
 from app.crud.budget import (create_budget, get_budgets, get_budget_by_id, update_budget, delete_budget)
 
 
-router = APIRouter(prefix="/finance/budgets", tags=["budgets"])
+router = APIRouter()
 
 # Budget Management Endpoints
 @router.get("/", response_model=List[BudgetResponse])

@@ -60,6 +60,9 @@ def get_budgets(
 def get_budget_by_id(db: Session, budget_id: str) -> Optional[Budget]:
     return db.query(Budget).filter(Budget.id == budget_id).first()
 
+def get_budget_by_name(db: Session, name: str) -> Optional[Budget]:
+    return db.query(Budget).filter(Budget.name == name).first()
+
 def update_budget(db: Session, budget_id: str, budget_data) -> Optional[Budget]:
     db_budget = get_budget_by_id(db, budget_id)
     if not db_budget:

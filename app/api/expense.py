@@ -9,7 +9,7 @@ from app.schemas import (ExpenseCreate, ExpenseUpdate, ExpenseResponse, ExpenseS
 from app.crud.expense import (create_expense, get_expenses, get_expense_by_id, update_expense, delete_expense, approve_expense, reject_expense)
 
 
-router = APIRouter(prefix="/finance/expenses", tags=["expenses"])
+router = APIRouter()
 
 # Expense Management Endpoints
 @router.get("/", response_model=List[ExpenseResponse])

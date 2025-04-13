@@ -8,7 +8,7 @@ from app.db.session import get_db
 from app.schemas import (TransactionCreate, TransactionResponse)
 from app.crud.transaction import (create_transaction, get_transactions, get_transaction_by_id)
 
-router = APIRouter(prefix="/finance/transaction", tags=["transaction"])
+router = APIRouter()
 
 # Transaction Management Endpoints
 @router.get("/", response_model=List[TransactionResponse])

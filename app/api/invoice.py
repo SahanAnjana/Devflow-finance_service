@@ -9,7 +9,7 @@ from app.schemas import (InvoiceCreate, InvoiceUpdate, InvoiceResponse, PaymentS
 from app.crud.invoice import (create_invoice, get_invoices, get_invoice_by_id, update_invoice, delete_invoice, mark_invoice_paid)
 
 
-router = APIRouter(prefix="/finance/invoices", tags=["invoices"])
+router = APIRouter()
 
 # Invoice Management Endpoints
 @router.get("/", response_model=List[InvoiceResponse])

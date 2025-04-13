@@ -16,7 +16,7 @@ from app.services.finance_reports import (
     generate_project_finance_report
 )
 
-router = APIRouter(prefix="/finance/reports", tags=["reports"])
+router = APIRouter()
 
 # Financial Reporting Endpoints
 @router.get("/summary", response_model=FinancialSummary)

@@ -8,7 +8,7 @@ from app.db.session import get_db
 from app.schemas import (AccountCreate, AccountUpdate, AccountResponse)
 from app.crud.account import (create_account, get_accounts, get_account_by_id, update_account, delete_account)
 
-router = APIRouter(prefix="/finance/accounts", tags=["accounts"])
+router = APIRouter()
 
 # Account Management Endpoints
 @router.get("/", response_model=List[AccountResponse])

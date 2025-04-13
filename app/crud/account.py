@@ -36,6 +36,10 @@ def get_accounts(db: Session, skip: int = 0, limit: int = 100, is_active: Option
 def get_account_by_id(db: Session, account_id: str) -> Optional[Account]:
     return db.query(Account).filter(Account.id == account_id).first()
 
+
+def get_account_by_number(db: Session, account_number: str) -> Optional[Account]:
+    return db.query(Account).filter(Account.account_number == account_number).first()
+
 def update_account(db: Session, account_id: str, account_data) -> Optional[Account]:
     db_account = get_account_by_id(db, account_id)
     if not db_account:
