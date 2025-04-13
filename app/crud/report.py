@@ -144,7 +144,7 @@ def get_revenue_data(db: Session, from_date: datetime, to_date: datetime) -> Dic
     # Revenue by month
     month_revenue = {}
     month_query = db.query(
-        func.date_trunc('month', Invoice.issue_date).label('month'),
+        func.DATE_FORMAT(Invoice.issue_date, '%Y-%m-01').label('month'),
         func.sum(Invoice.total_amount).label('total')
     ).filter(
         Invoice.status == PaymentStatus.PAID,
@@ -223,7 +223,7 @@ def get_expense_data(db: Session, from_date: datetime, to_date: datetime) -> Dic
     # Expenses by month
     month_expenses = {}
     month_query = db.query(
-        func.date_trunc('month', Expense.expense_date).label('month'),
+        func.DATE_FORMAT(Expense.expense_date, '%Y-%m-01').label('month'),
         func.sum(Expense.amount).label('total')
     ).filter(
         Expense.status == ExpenseStatus.APPROVED,
@@ -232,8 +232,8 @@ def get_expense_data(db: Session, from_date: datetime, to_date: datetime) -> Dic
     ).group_by('month').order_by('month').all()
     
     for month, total in month_query:
-        month_key = month.strftime('%Y-%m')
-        month_expenses[month_key] = float(total)
+        # month_key = month.strftime('%Y-%m')
+        month_expenses[month] = float(total)
     
     return {
         "total_expenses": total_expenses,
